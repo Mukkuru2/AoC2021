@@ -1,4 +1,4 @@
-export const numberListExercise1 = [
+export const depths = [
   109,
   117,
   118,
