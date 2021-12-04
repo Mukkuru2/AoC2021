@@ -60,8 +60,7 @@ export class Day04Component implements OnInit {
       boards: boards.map(board => TransformToBoard(board))
     }
 
-    this.ans1 = this.partOneTwo(game);
-    // this.ans2 = this.partTwo(game);
+    this.partOneTwo(game);
   }
 
 
@@ -99,7 +98,6 @@ export class Day04Component implements OnInit {
 
           if (hasBingo(board)) {
 
-            console.log(numbersDrawn);
             board.winTurns = numbersDrawn;
             board.lastNumber = drawnNumber;
             break;
@@ -107,8 +105,6 @@ export class Day04Component implements OnInit {
         }
       }
     })
-
-    console.log(game);
 
     let winBoard: Board = game.boards.reduce((_b, b) => _b.winTurns < b.winTurns ? _b : b);
     const left = sumLeft(winBoard);
