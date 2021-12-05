@@ -54,8 +54,6 @@ export class Day05Component implements OnInit {
       this.fillLine(diagonals, command, true);
     })
 
-    console.log(diagonals);
-
     this.ans1 = this.count(lines);
     this.ans2 = this.count(diagonals);
   }

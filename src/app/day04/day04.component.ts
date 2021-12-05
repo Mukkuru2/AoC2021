@@ -38,8 +38,6 @@ export class Day04Component implements OnInit {
         i++;
       }
     })
-    //pop last board because its empty. Loses by default, problem of parser and file saving.
-    rawBoards.pop();
 
     function TransformToBoard(board: number[][]) {
       let arr: number[][] = [];
@@ -60,6 +58,8 @@ export class Day04Component implements OnInit {
       boards: boards.map(board => TransformToBoard(board))
     }
 
+    //pop last board because its empty. Loses by default, problem of parser and file saving.
+    game.boards.pop();
     this.partOneTwo(game);
   }
 
@@ -94,7 +94,6 @@ export class Day04Component implements OnInit {
           const col = board.board[row].indexOf(drawnNumber);
 
           board.hitNumbers[row][col] = 1;
-
 
           if (hasBingo(board)) {
 
