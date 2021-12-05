@@ -7,9 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Day00Component implements OnInit {
 
+  public ans1: any;
+  public ans2: any;
+
   constructor() { }
 
   ngOnInit(): void {
+    fetch("/assets/input")
+      .then(file => {
+        return file.text()
+      })
+      .then(data => {
+        this.main(data);
+      });
+  }
+
+  private main(data: string){
+
   }
 
 }
