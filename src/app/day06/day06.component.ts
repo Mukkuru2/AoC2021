@@ -24,21 +24,21 @@ export class Day06Component implements OnInit {
   }
 
   private main(data: string) {
-    let fishies: number[] = data.split(',').map(str => parseInt(str));
+let fishies: number[] = data.split(',').map(str => parseInt(str));
 
-    for (let i = 0; i < 80; i++) {
-      let add: number[] = [];
-      fishies = fishies.map((fish) => {
-        if (fish === 0) {
-          add.push(8);
-          return 6;
-        } else {
-          return fish - 1;
-        }
-      })
-      fishies = fishies.concat(add);
+for (let i = 0; i < 80; i++) {
+  let add: number[] = [];
+  fishies = fishies.map((fish) => {
+    if (fish === 0) {
+      add.push(8);
+      return 6;
+    } else {
+      return fish - 1;
     }
-    this.ans1 = fishies.length;
+  })
+  fishies = fishies.concat(add);
+}
+this.ans1 = fishies.length;
 
     let fishies2: number[] = data.split(',').map(str => parseInt(str));
     let fishAmount: number[][] = [];

@@ -9,6 +9,7 @@ import { Day04Component } from './day04/day04.component';
 import { Day00Component } from './day00/day00.component';
 import { Day05Component } from './day05/day05.component';
 import { Day06Component } from './day06/day06.component';
+import { Day07Component } from './day07/day07.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { Day06Component } from './day06/day06.component';
     Day04Component,
     Day00Component,
     Day05Component,
-    Day06Component
+    Day06Component,
+    Day07Component
   ],
   imports: [
     BrowserModule
