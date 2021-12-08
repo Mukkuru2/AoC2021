@@ -15,8 +15,12 @@ export class Exercise1Component implements OnInit {
   }
 
   ngOnInit(): void {
+    let now = Date.now();
     this.partOne();
+    console.log("Day 1 p1 took " + (Date.now() - now) + "ms")
+    now = Date.now();
     this.partTwo();
+    console.log("Day 1 p2 took " + (Date.now() - now) + "ms")
   }
 
   private partOne() {

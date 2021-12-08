@@ -19,8 +19,12 @@ export class Day03Component implements OnInit {
         return file.text()
       })
       .then(data => {
+        let now = Date.now();
         this.ans1 = this.partOne(data);
+        console.log("Day 3 p1 took " + (Date.now() - now) + "ms")
+        now = Date.now();
         this.ans2 = this.partTwo(data);
+        console.log("Day 3 p2 took " + (Date.now() - now) + "ms")
       });
   }
 

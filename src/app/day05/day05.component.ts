@@ -24,6 +24,7 @@ export class Day05Component implements OnInit {
   }
 
   private main(data: string) {
+    let now = Date.now();
     let lines: number[][] = [];
     for (let i = 0; i < new Array(1000).length; i++) {
       lines[i] = new Array(1000).fill(0);
@@ -56,6 +57,7 @@ export class Day05Component implements OnInit {
 
     this.ans1 = this.count(lines);
     this.ans2 = this.count(diagonals);
+    console.log("Day 5 took " + (Date.now() - now) + "ms");
   }
 
   private fillLine(field: number[][], coordinates: number[], diagonal: boolean) {

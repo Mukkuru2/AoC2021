@@ -1,6 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-// import aocLoader from 'aoc-loader';
-// import { sessionCookie } from ''
 
 @Component({
   selector: 'app-day07',
@@ -16,7 +14,6 @@ export class Day07Component implements OnInit {
   }
 
   ngOnInit(): void {
-    // aocLoader(2021, 7, )
     fetch("/assets/input7")
       .then(file => {
         return file.text()
@@ -27,16 +24,19 @@ export class Day07Component implements OnInit {
   }
 
   private main(data: string) {
-
+    let now = Date.now();
     this.partOne(data);
+    console.log("Day 7 p1 took " + (Date.now() - now) + "ms")
+    now = Date.now();
     this.partTwo(data);
+    console.log("Day 7 p2 took " + (Date.now() - now) + "ms")
   }
 
 
   private partOne(data: string) {
-    let nums = data.split(',').map(x => parseInt(x))
-    let max = Math.max(...nums);
-    let min = Math.min(...nums);
+    const nums = data.split(',').map(x => parseInt(x))
+    const max = Math.max(...nums);
+    const min = Math.min(...nums);
 
     let least = Infinity;
     for (let i = min; i < max; i++) {
@@ -46,19 +46,16 @@ export class Day07Component implements OnInit {
       })
       least = c < least ? c : least;
     }
-
     this.ans1 = least;
   }
 
   private partTwo(data: string) {
-    let nums = data.split(',').map(x => parseInt(x))
-    let max = Math.max(...nums);
-    let min = Math.min(...nums);
+    const nums = data.split(',').map(x => parseInt(x))
+    const max = Math.max(...nums);
+    const min = Math.min(...nums);
 
-
-    const triangular = function (value:number) {
-      var abs = Math.abs(value);
-      return ((abs / 2) * (abs + 1)) * (abs / value) || 0;
+    const triangular = function (value: number) {
+      return ((value / 2) * (value + 1)) || 0;
     };
 
     let least = Infinity;
