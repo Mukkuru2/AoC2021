@@ -9,6 +9,8 @@ export class Day08Component implements OnInit {
 
   public ans1: any;
   public ans2: any;
+  public ans1time: number = 0;
+  public ans2time: number = 0;
 
   private readonly DIGITS = [['a', 'b', 'c', 'e', 'f', 'g'],
     ['c', 'f'],
@@ -37,8 +39,12 @@ export class Day08Component implements OnInit {
   private main(data: string) {
     const commands = data.split("\n");
     commands.pop();
+    let now = Date.now()
     this.partOne(commands);
+    this.ans1time = Date.now() - now;
+    now = Date.now()
     this.partTwo(commands);
+    this.ans2time = Date.now() - now;
   }
 
   private partOne(commands: string[]) {
@@ -116,7 +122,6 @@ export class Day08Component implements OnInit {
       // @ts-ignore
       const numbers = fixedOutput.map(digit => this.getNumber(digit))
 
-      console.log(numbers, fixedOutput);
       this.ans2 += parseInt(numbers.join(''));
     })
 

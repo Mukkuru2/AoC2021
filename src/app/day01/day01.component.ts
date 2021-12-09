@@ -10,6 +10,8 @@ export class Exercise1Component implements OnInit {
 
   public nDeeper = 0;
   public nDeeperAvg = 0;
+  public ans1time: number = 0;
+  public ans2time: number = 0;
 
   constructor() {
   }
@@ -17,10 +19,10 @@ export class Exercise1Component implements OnInit {
   ngOnInit(): void {
     let now = Date.now();
     this.partOne();
-    console.log("Day 1 p1 took " + (Date.now() - now) + "ms")
+    this.ans1time = Date.now() - now;
     now = Date.now();
     this.partTwo();
-    console.log("Day 1 p2 took " + (Date.now() - now) + "ms")
+    this.ans2time = Date.now() - now;
   }
 
   private partOne() {

@@ -9,6 +9,8 @@ export class Day06Component implements OnInit {
 
   public ans1: any;
   public ans2: any;
+  public ans1time: number = 0;
+  public ans2time: number = 0;
 
   constructor() {
   }
@@ -40,7 +42,7 @@ export class Day06Component implements OnInit {
       fishies = fishies.concat(add);
     }
     this.ans1 = fishies.length;
-    console.log("Day 6 p1 took " + (Date.now() - now) + "ms")
+    this.ans1time = Date.now() - now;
     now = Date.now();
 
     let fishies2: number[] = data.split(',').map(str => parseInt(str));
@@ -75,7 +77,7 @@ export class Day06Component implements OnInit {
     }
 
     this.ans2 = fishAmount.reduce((fish, fish2) => [fish[0], fish[1] + fish2[1]])[1];
-    console.log("Day 6 p2 took " + (Date.now() - now) + "ms")
+    this.ans2time = Date.now() - now;
   }
 
 }

@@ -9,6 +9,8 @@ export class Day07Component implements OnInit {
 
   public ans1: any;
   public ans2: any;
+  public ans1time: number = 0;
+  public ans2time: number = 0;
 
   constructor() {
   }
@@ -26,10 +28,10 @@ export class Day07Component implements OnInit {
   private main(data: string) {
     let now = Date.now();
     this.partOne(data);
-    console.log("Day 7 p1 took " + (Date.now() - now) + "ms")
+    this.ans1time = Date.now() - now;
     now = Date.now();
     this.partTwo(data);
-    console.log("Day 7 p2 took " + (Date.now() - now) + "ms")
+    this.ans2time = Date.now() - now;
   }
 
 

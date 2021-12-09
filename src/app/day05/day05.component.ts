@@ -9,6 +9,8 @@ export class Day05Component implements OnInit {
 
   public ans1: any;
   public ans2: any;
+  public ans1time: number = 0;
+  public ans2time: number = 0;
 
   constructor() {
   }
@@ -56,8 +58,9 @@ export class Day05Component implements OnInit {
     })
 
     this.ans1 = this.count(lines);
+    this.ans1time = Date.now() - now;
     this.ans2 = this.count(diagonals);
-    console.log("Day 5 took " + (Date.now() - now) + "ms");
+    this.ans2time = Date.now() - now;
   }
 
   private fillLine(field: number[][], coordinates: number[], diagonal: boolean) {

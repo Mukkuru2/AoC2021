@@ -8,6 +8,8 @@ import {Component, OnInit} from '@angular/core';
 export class Day04Component implements OnInit {
   public ans1: any;
   public ans2: any;
+  public ans1time: number = 0;
+  public ans2time: number = 0;
 
   constructor() {
   }
@@ -18,7 +20,10 @@ export class Day04Component implements OnInit {
         return file.text()
       })
       .then(data => {
+        const now = Date.now();
         this.main(data);
+        this.ans1time = Date.now() - now;
+        this.ans2time = Date.now() - now;
       });
   }
 

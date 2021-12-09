@@ -9,6 +9,8 @@ export class Day00Component implements OnInit {
 
   public ans1: any;
   public ans2: any;
+  public ans1time: number = 0;
+  public ans2time: number = 0;
 
   constructor() { }
 
