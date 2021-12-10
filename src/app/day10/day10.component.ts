@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {UtilityService} from "../utility.service";
 
 @Component({
   selector: 'app-day10',
@@ -12,6 +13,8 @@ export class Day10Component implements OnInit {
   public ans1time: number = 0;
   public ans2time: number = 0;
 
+  private utilities: UtilityService;
+
   public readonly pairs = new Map<string, string>([
     ['[', ']'],
     ['<', '>'],
@@ -19,25 +22,23 @@ export class Day10Component implements OnInit {
     ['(', ')']
   ])
 
-  constructor() {
+  constructor(utilities: UtilityService) {
+    this.utilities = utilities;
   }
 
   ngOnInit(): void {
-    fetch("/assets/input10")
-      .then(file => {
-        return file.text()
-      })
-      .then(data => {
-        this.main(data);
-      });
+    this.utilities.getInput("input10").then(data => this.main(data));
   }
 
   private main(data: string) {
     const rows = data.split('\n').map(row => row.split('\r')[0]);
     rows.pop()
-    let now = Date.now();
+    this.utilities.startTimer();
     this.partOne(rows);
-    this.ans1time = Date.now() - now;
+    this.ans1time = this.utilities.getTime();
+    this.utilities.startTimer();
+    this.partTwo(rows);
+    this.ans2time = this.utilities.getTime();
   }
 
   private partOne(rows: string[]) {
@@ -54,20 +55,14 @@ export class Day10Component implements OnInit {
 
     this.ans1 = sum;
 
-    const now = Date.now();
-    this.partTwo(rows);
-    this.ans2time = Date.now() - now;
-
   }
 
   private partTwo(rows: string[]) {
-    console.log(rows);
     let sums: number[] = [];
     rows.forEach((row, index) => {
         const unfinished = this.checkFinish(row);
         let sum = 0;
         while (unfinished.size() !== 0) {
-          console.log(unfinished.peek())
           sum *= 5;
           sum += this.checkValue(this.pairs.get(<string>unfinished.pop()), false);
         };
@@ -144,15 +139,12 @@ class Stack<T> implements IStack<T> {
     }
     this.storage.push(item);
   }
-
   pop(): T | undefined {
     return this.storage.pop();
   }
-
   peek(): T | undefined {
     return this.storage[this.size() - 1];
   }
-
   size(): number {
     return this.storage.length;
   }
@@ -160,10 +152,7 @@ class Stack<T> implements IStack<T> {
 
 interface IStack<T> {
   push(item: T): void;
-
   pop(): T | undefined;
-
   peek(): T | undefined;
-
   size(): number;
 }
