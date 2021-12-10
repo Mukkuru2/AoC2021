@@ -45,27 +45,24 @@ export class Day10Component implements OnInit {
     let sum = 0;
     rows.forEach((row, index) => {
         const corrupt = this.checkCorrupt(row);
-        if (corrupt !== undefined) {
-          rows[index] = '';
-        }
         sum += this.checkValue(corrupt, true);
       }
     )
-    rows = rows.filter(row => row !== '');
-
     this.ans1 = sum;
-
   }
 
   private partTwo(rows: string[]) {
     let sums: number[] = [];
+
+    rows = rows.filter(row => this.checkCorrupt(row) === undefined)
+
     rows.forEach((row, index) => {
         const unfinished = this.checkFinish(row);
         let sum = 0;
         while (unfinished.size() !== 0) {
           sum *= 5;
           sum += this.checkValue(this.pairs.get(<string>unfinished.pop()), false);
-        };
+        }
 
         sums.push(sum);
       }
@@ -139,12 +136,15 @@ class Stack<T> implements IStack<T> {
     }
     this.storage.push(item);
   }
+
   pop(): T | undefined {
     return this.storage.pop();
   }
+
   peek(): T | undefined {
     return this.storage[this.size() - 1];
   }
+
   size(): number {
     return this.storage.length;
   }
@@ -152,7 +152,10 @@ class Stack<T> implements IStack<T> {
 
 interface IStack<T> {
   push(item: T): void;
+
   pop(): T | undefined;
+
   peek(): T | undefined;
+
   size(): number;
 }
