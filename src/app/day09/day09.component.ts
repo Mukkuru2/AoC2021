@@ -56,7 +56,6 @@ export class Day09Component implements OnInit {
         }
         const numBasin = this.countBasin(x, y, noWalls);
         if (numBasin > Math.min(...largest)) {
-          console.log('larger!');
           largest.find((x, index) => {
             if (x === Math.min(...largest)) {
               largest[index] = numBasin;

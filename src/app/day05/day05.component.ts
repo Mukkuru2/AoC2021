@@ -59,6 +59,7 @@ export class Day05Component implements OnInit {
 
     this.ans1 = this.count(lines);
     this.ans1time = Date.now() - now;
+    now = Date.now();
     this.ans2 = this.count(diagonals);
     this.ans2time = Date.now() - now;
   }
